@@ -5,7 +5,7 @@
 # connect with has_one to your user model.
 if defined? ConsumerToken && defined? OAUTH_CREDENTIALS
   OAUTH_CREDENTIALS.each do |key, value|
-    class_name=value[:class_name]||"#{key.to_s.classify}Token"
+    class_name=value[:class_name]||"#{key.to_s.clamelcase}Token"
     unless Object.const_defined?(class_name.to_sym)
       if File.exists?(File.join(File.dirname(__FILE__), "services","#{key.to_s}_token.rb"))
         require File.join(File.dirname(__FILE__), "services","#{key.to_s}_token")
